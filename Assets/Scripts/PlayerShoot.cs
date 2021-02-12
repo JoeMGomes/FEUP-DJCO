@@ -41,7 +41,7 @@ public class PlayerShoot : MonoBehaviour
         }
         lineRenderer.enabled = true;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.02f);
         lineRenderer.enabled = false;
 
     }
