@@ -2,23 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerShoot : MonoBehaviour
 {
     public Transform bulletSpawn;
     public LayerMask hitLayer;
-    public LineRenderer lineRenderer;
+    //public LineRenderer lineRenderer;
+
+    public GameObject zapp;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-          StartCoroutine(Shoot());
+          Shoot();
         }
     }
 
-    IEnumerator Shoot()
+    void Shoot()
     {
         Vector2 shootPosition = Input.mousePosition;
 
@@ -26,23 +29,16 @@ public class PlayerShoot : MonoBehaviour
 
         if (hit)
         {
-            Debug.Log(hit.transform.name);
-            lineRenderer.SetPosition(0, bulletSpawn.position);
-            lineRenderer.SetPosition(1, hit.point);
+            Zapp zappScript = Instantiate(zapp, bulletSpawn.position, Quaternion.identity).GetComponent<Zapp>();
+            zappScript.ZapTarget(hit.point);
+        
         }
         else {
 
-            lineRenderer.SetPosition(0, bulletSpawn.position);
-            Vector3 infiniteTrail = Camera.main.ScreenToWorldPoint(shootPosition) - bulletSpawn.position;
-            infiniteTrail.Scale(new Vector3(100, 100, 0));
+            Zapp zappScript = Instantiate(zapp, bulletSpawn.position, Quaternion.identity).GetComponent<Zapp>();
+            zappScript.ZapTarget(Camera.main.ScreenToWorldPoint(shootPosition) );
 
-
-            lineRenderer.SetPosition(1, infiniteTrail );
         }
-        lineRenderer.enabled = true;
-
-        yield return new WaitForSeconds(0.02f);
-        lineRenderer.enabled = false;
-
     }
+
 }
