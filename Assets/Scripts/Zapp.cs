@@ -7,18 +7,15 @@ public class Zapp : MonoBehaviour
     private LineRenderer lineRend;
     private float arcLength = 1.0f;
     private float arcVariation = 1.0f;
-    private float inaccuracy = 0.5f;
+    private float inaccuracy = 0.1f;
     private float timeOfZap = 0.25f;
     private float zapTimer;
-    //private LightningTrace lightTrace;
-
+    private bool started;
     void Start()
     {
         lineRend = gameObject.GetComponent<LineRenderer>();
         zapTimer = 0.25f;
-        lineRend.positionCount = (1);
-        //lightTrace = gameObject.GetComponent<LightningTrace>();
-        
+        lineRend.positionCount = (1);       
     }
 
     void Update()
@@ -43,8 +40,11 @@ public class Zapp : MonoBehaviour
             }
             lineRend.positionCount = (i + 1);
             lineRend.SetPosition(i, target);
-            //lightTrace.TraceLight(gameObject.transform.position, target.transform.position);
             zapTimer = zapTimer - Time.deltaTime;
+        }//If already fired
+        else if(zapTimer <= 0 && started)
+        {
+            Destroy(gameObject);
         }
         else
             lineRend.positionCount = (1);
@@ -60,10 +60,9 @@ public class Zapp : MonoBehaviour
 
     public void ZapTarget(Vector2 newTarget)
     {
-        Debug.Log("zap called");
         target = newTarget;
         zapTimer = timeOfZap;
-
+        started = true;
     }
 }
 

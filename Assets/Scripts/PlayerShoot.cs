@@ -8,11 +8,9 @@ public class PlayerShoot : MonoBehaviour
 {
     public Transform bulletSpawn;
     public LayerMask hitLayer;
-    //public LineRenderer lineRenderer;
 
     public GameObject zapp;
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -31,13 +29,11 @@ public class PlayerShoot : MonoBehaviour
         {
             Zapp zappScript = Instantiate(zapp, bulletSpawn.position, Quaternion.identity).GetComponent<Zapp>();
             zappScript.ZapTarget(hit.point);
-        
         }
         else {
 
             Zapp zappScript = Instantiate(zapp, bulletSpawn.position, Quaternion.identity).GetComponent<Zapp>();
             zappScript.ZapTarget(Camera.main.ScreenToWorldPoint(shootPosition) );
-
         }
     }
 

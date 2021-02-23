@@ -49,9 +49,9 @@ public class PlayerMovement : MonoBehaviour
         Vector2 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - armParent.transform.position;
 
         diff.Normalize();
-
         float rotation = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
+        //Handle arm roation and face the player sprite to the mouse
         armParent.transform.rotation = Quaternion.Euler(0f, 0f, rotation);
         bodyParent.transform.localRotation = Quaternion.Euler(0, 0, 0);
         //Mouse to the left side of the player
@@ -61,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 armParent.transform.localRotation = Quaternion.Euler(180, 0, -rotation);
                 bodyParent.transform.localRotation = Quaternion.Euler(0, 180, 0);
-                
             }
         } 
     }

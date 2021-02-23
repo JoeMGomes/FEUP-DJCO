@@ -278,6 +278,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: b03abebf012603344ac3b930174e44b2,
         type: 3}
+    - target: {fileID: 1722204669453551540, guid: 4eeb24f252ae6d941b65fae879e52235,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eeb24f252ae6d941b65fae879e52235, type: 3}
 --- !u!1001 &1304158488768241986
@@ -492,6 +497,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f78291d2ddffa7544825da0fdf6b4b60, type: 3}
+--- !u!1001 &7648289514157234295
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592386, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648289512678592388, guid: 3ac675052bd0f3040a556c359d30fc5d,
+        type: 3}
+      propertyPath: m_Name
+      value: Bench
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ac675052bd0f3040a556c359d30fc5d, type: 3}
 --- !u!1001 &8787055139116644295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -499,17 +573,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8787055137702056471, guid: 6c656c8e2e1958f4d927aca629967fea,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8787055139648735330, guid: 6c656c8e2e1958f4d927aca629967fea,
-        type: 3}
-      propertyPath: zapp
-      value: 
-      objectReference: {fileID: 4267628343631450659, guid: 34302b4c291eef14396122d687fce2d8,
-        type: 3}
     - target: {fileID: 8787055139648735333, guid: 6c656c8e2e1958f4d927aca629967fea,
         type: 3}
       propertyPath: m_RootOrder

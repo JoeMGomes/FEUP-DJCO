@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8787055137702056456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8787055139489824665}
@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 8787055139648735332}
   - component: {fileID: 8787055139648735331}
   - component: {fileID: 8787055139648735330}
+  - component: {fileID: 7045463284472809040}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -375,7 +376,16 @@ MonoBehaviour:
   hitLayer:
     serializedVersion: 2
     m_Bits: 1280
-  lineRenderer: {fileID: 0}
-  arcLength: 2
-  arcVariation: 2
-  inaccuracy: 1
+  zapp: {fileID: 4267628343631450659, guid: 34302b4c291eef14396122d687fce2d8, type: 3}
+--- !u!114 &7045463284472809040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787055139648735335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf0945a80837914bb9468842553cd65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
