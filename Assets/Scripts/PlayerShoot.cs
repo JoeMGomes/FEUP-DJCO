@@ -10,6 +10,8 @@ public class PlayerShoot : MonoBehaviour
     public LayerMask hitLayer;
 
     public GameObject zapp;
+    public PlayerMana mana;
+    public float manaUsage = 20;
 
     void Update()
     {
@@ -21,6 +23,9 @@ public class PlayerShoot : MonoBehaviour
 
     void Shoot()
     {
+        if (mana.mana < manaUsage) return;
+        mana.UseMana(manaUsage);
+
         Vector2 shootPosition = Input.mousePosition;
 
         RaycastHit2D hit = Physics2D.Raycast(bulletSpawn.position, Camera.main.ScreenToWorldPoint(shootPosition) - bulletSpawn.position, 100, hitLayer);
@@ -35,6 +40,7 @@ public class PlayerShoot : MonoBehaviour
             Zapp zappScript = Instantiate(zapp, bulletSpawn.position, Quaternion.identity).GetComponent<Zapp>();
             zappScript.ZapTarget(Camera.main.ScreenToWorldPoint(shootPosition) );
         }
+
     }
 
 }
