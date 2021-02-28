@@ -36,7 +36,7 @@ public class Score : MonoBehaviour
         score = (100000000.0f / (float)CurrentRunTime().TotalMilliseconds) + score;
     }
 
-    void IncrementScore(float amount)
+    public void IncrementScore(float amount)
     {
         score += amount;
     }
