@@ -66,9 +66,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     bool IsGrounded()
-    {   //Shoots a raycast to the ground 
+    {
+        //if falling or already jumping
+        if (m_rigidbody.velocity.y != 0) return false;
+        
+        //Shoots a raycast to the ground 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundDist+0.2f, floorLayer);
-        //Returns true if the rayvast hit an object with floorLayer Layer
+        
+        //Returns true if the raycast hit an object with floorLayer Layer
         return hit.collider != null;
     }
 }

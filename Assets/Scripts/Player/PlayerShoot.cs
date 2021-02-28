@@ -12,6 +12,7 @@ public class PlayerShoot : MonoBehaviour
     public GameObject zapp;
     public PlayerMana mana;
     public float manaUsage = 20;
+    public float damage = 30;
 
     void Update()
     {
@@ -34,6 +35,12 @@ public class PlayerShoot : MonoBehaviour
         {
             Zapp zappScript = Instantiate(zapp, bulletSpawn.position, Quaternion.identity).GetComponent<Zapp>();
             zappScript.ZapTarget(hit.point);
+
+            if (hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                hit.collider.gameObject.GetComponent<EnemyStats>().TakeDamage(damage);
+
+            }
         }
         else {
 
