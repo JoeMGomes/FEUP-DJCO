@@ -7,15 +7,23 @@ public class Zapp : MonoBehaviour
     private LineRenderer lineRend;
     private float arcLength = 1.0f;
     private float arcVariation = 1.0f;
-    private float inaccuracy = 0.1f;
-    private float timeOfZap = 0.25f;
+    public float inaccuracy = 0.1f;
+    public float timeOfZap = 0.25f;
     private float zapTimer;
     private bool started;
+
+
+    private Transform targetPlayer;
+    private void Awake()
+    {
+    }
     void Start()
     {
         lineRend = gameObject.GetComponent<LineRenderer>();
         zapTimer = 0.25f;
-        lineRend.positionCount = (1);       
+        lineRend.positionCount = (1);
+        targetPlayer = GameObject.Find("Player/Arm/Bullet_Spawn").GetComponent<Transform>();
+
     }
 
     void Update()
@@ -23,9 +31,9 @@ public class Zapp : MonoBehaviour
 
         if (zapTimer > 0)
         {
-            Vector2 lastPoint = transform.position;
+            Vector2 lastPoint = targetPlayer.position;
             int i = 1;
-            lineRend.SetPosition(0, transform.position);//make the origin of the LR the same as the transform
+            lineRend.SetPosition(0, targetPlayer.position);//make the origin of the LR the same as the transform
             while (Vector3.Distance(target, lastPoint) > 1.0f)
             {//was the last arc not touching the target?
                 lineRend.positionCount = (i + 1);//then we need a new vertex in our line renderer

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9136346473496089919}
   - component: {fileID: 9136346473496089918}
   - component: {fileID: 9136346473496089917}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Printer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 126.11
+  m_SurfaceArc: 71.15
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1

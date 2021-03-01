@@ -269,9 +269,11 @@ GameObject:
   - component: {fileID: 8787055139648735331}
   - component: {fileID: 8787055139648735330}
   - component: {fileID: 7045463284472809040}
+  - component: {fileID: 381546857}
+  - component: {fileID: 381546864}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -351,13 +353,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23460970a3b9573428518699f1c17a2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rigidbody: {fileID: 0}
+  rigidBody: {fileID: 0}
+  boxCollider: {fileID: 0}
   moveSpeed: 10
   jumpHeight: 10
   groundDist: 0
   floorLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 6400
+  dropDownLayer:
+    serializedVersion: 2
+    m_Bits: 6144
+  dropDownTime: 0.4
   armParent: {fileID: 8787055139489824666}
   bodyParent: {fileID: 8787055138229131622}
 --- !u!114 &8787055139648735330
@@ -377,6 +384,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   zapp: {fileID: 4267628343631450659, guid: 34302b4c291eef14396122d687fce2d8, type: 3}
+  mana: {fileID: 381546864}
+  manaUsage: 20
+  damage: 30
 --- !u!114 &7045463284472809040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,3 +399,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf0945a80837914bb9468842553cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &381546857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787055139648735335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5203e4735af8e43955d67aa88c624d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  healthBar: {fileID: 0}
+--- !u!114 &381546864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787055139648735335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b00e5921a2db748a0e081faa526053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mana: 100
+  maxMana: 100
+  manaPerSecond: 50
+  manaBar: {fileID: 0}
