@@ -16,7 +16,7 @@ public class Score : MonoBehaviour
 
     public GameObject textPopup_prefab;
     public GameObject textPopupPosition;
-    public string[] scorePhrases = new string[] { "Sou muito bom ;)", "Hoje ou amanhã", "Envia-me um email", "Estudasses", "Pro' ano há mais" };
+    public string[] scorePhrases = new string[] { "Mereço um café", "Hoje ou amanhã", "Envia-me um email", "Estudasses", "Pro' ano há mais", "Because why?" };
 
 
     void Update()
