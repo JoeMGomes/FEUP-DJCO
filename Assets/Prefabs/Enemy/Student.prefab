@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1981344405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1981344406}
+  m_Layer: 10
+  m_Name: TextPopup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1981344406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981344405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.13, y: 0.78, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1304158488534142765}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1304158487203834646
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +207,7 @@ Transform:
   m_Children:
   - {fileID: 1304158487531467973}
   - {fileID: 1304158487203834647}
+  - {fileID: 1981344406}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -231,6 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 5
   moveSpeed: 3
+  meleeDamage: 20
   armParent: {fileID: 1304158487203834646}
   bodyParent: {fileID: 1304158487531467972}
 --- !u!114 &5694904881273483248
@@ -246,6 +278,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  scoreValue: 20
+  health_bar_prefab: {fileID: 6229868236867227510, guid: 5d3174a15cf83a843b1d997689cc6916,
+    type: 3}
+  offset_healthbar: {x: 0, y: 1.5, z: 0}
+  high: {r: 0.2028302, g: 1, b: 0.20843507, a: 1}
+  low: {r: 1, g: 0.24056602, b: 0.24056602, a: 1}
+  textPopup_prefab: {fileID: 4789671674291785708, guid: 63df6ac8d8f051e43ab25575f6f63e7a,
+    type: 3}
+  textPopupPosition: {fileID: 1981344405}
+  hitPhrases:
+  - Mas...
+  - "Oh st\xF4ree..."
+  - Oh, mas...
+  diePhrases:
+  - "Vou falar com o pedag\xF3gico!"
+  - "N\xE3o fica assim..."
+  - OK, desculpe-me
 --- !u!1 &1304158489080052646
 GameObject:
   m_ObjectHideFlags: 0

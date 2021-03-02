@@ -15,6 +15,12 @@ public class EnemyStats : MonoBehaviour
     public Vector3 offset_healthbar = new Vector3(0,1,0);
     public Color high, low;
 
+    public GameObject textPopup_prefab;
+    public GameObject textPopupPosition;
+
+    public string[] hitPhrases = new string[] { "Mas...", "Oh stôree...", "Oh, mas..." };
+    public string[] diePhrases = new string[] { "Vou falar com o pedagógico!", "Não fica assim...", "OK, desculpe-me" };
+
     private void Awake()
     {
         targetPlayer = GameObject.Find("Player");
@@ -36,6 +42,8 @@ public class EnemyStats : MonoBehaviour
         if(health <= 0)
         {
             targetPlayer.GetComponent<Score>().IncrementScore(scoreValue);
+            TextPopup t = Instantiate(textPopup_prefab, textPopupPosition.transform.position, transform.rotation).GetComponent<TextPopup>();
+            t.Setup(diePhrases[Mathf.FloorToInt(Random.Range(0, diePhrases.Length))]);
             Destroy(gameObject);
         }
 
@@ -60,5 +68,7 @@ public class EnemyStats : MonoBehaviour
     {
         health -= damage;
         health_slider.value = health;
+        TextPopup t = Instantiate(textPopup_prefab, textPopupPosition.transform.position, transform.rotation).GetComponent<TextPopup>();
+        t.Setup(hitPhrases[Mathf.FloorToInt(Random.Range(0,hitPhrases.Length))]);
     }
 }

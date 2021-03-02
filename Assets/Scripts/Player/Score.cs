@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Score : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class Score : MonoBehaviour
     private bool started = false;
 
     private float score = 34;
+
+    public GameObject textPopup_prefab;
+    public GameObject textPopupPosition;
+    public string[] scorePhrases = new string[] { "Sou muito bom ;)", "Hoje ou amanhã", "Envia-me um email", "Estudasses", "Pro' ano há mais" };
+
 
     void Update()
     {
@@ -39,6 +45,9 @@ public class Score : MonoBehaviour
     public void IncrementScore(float amount)
     {
         score += amount;
+
+        TextPopup t = Instantiate(textPopup_prefab, textPopupPosition.transform.position, transform.rotation).GetComponent<TextPopup>();
+        t.Setup(scorePhrases[Mathf.FloorToInt(Random.Range(0, scorePhrases.Length))]);
     }
 
     //Returns current run time
