@@ -1154,6 +1154,12 @@ PrefabInstance:
       propertyPath: textPopupPosition
       value: 
       objectReference: {fileID: 587701387}
+    - target: {fileID: 8787055139648735330, guid: 6c656c8e2e1958f4d927aca629967fea,
+        type: 3}
+      propertyPath: grenade
+      value: 
+      objectReference: {fileID: 2001295239423028087, guid: d73e9b810d1e5734eaabd399c9ca04f9,
+        type: 3}
     - target: {fileID: 8787055139648735333, guid: 6c656c8e2e1958f4d927aca629967fea,
         type: 3}
       propertyPath: m_RootOrder
@@ -1227,6 +1233,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Printer
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136346473496089918, guid: 4b5d41ebfb9ac6f4883827c4c62979bf,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.15352774
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136346473496089918, guid: 4b5d41ebfb9ac6f4883827c4c62979bf,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.804754
       objectReference: {fileID: 0}
     - target: {fileID: 9136346473496089919, guid: 4b5d41ebfb9ac6f4883827c4c62979bf,
         type: 3}

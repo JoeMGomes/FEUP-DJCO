@@ -41,10 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4267628343631450659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02d6d40a8daa9f44695530b8e0c420c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 557510ab60c81ad4fbeaf0ecc8c662af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inaccuracy: 0.2
+  inaccuracy: 0.1
   timeOfZap: 0.25
 --- !u!120 &4044671247900957936
 LineRenderer:

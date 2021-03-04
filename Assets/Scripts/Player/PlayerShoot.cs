@@ -10,6 +10,8 @@ public class PlayerShoot : MonoBehaviour
     public LayerMask hitLayer;
 
     public GameObject zapp;
+    public GameObject grenade;
+
     public PlayerMana mana;
     public float manaUsage = 20;
     public float damage = 30;
@@ -18,11 +20,20 @@ public class PlayerShoot : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-          Shoot();
+          ShootPrimary();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            ShootSecondary();
         }
     }
 
-    void Shoot()
+    private void ShootSecondary()
+    {
+        Instantiate(grenade, bulletSpawn.position, Quaternion.identity);
+    }
+
+    void ShootPrimary()
     {
         if (mana.mana < manaUsage) return;
         mana.UseMana(manaUsage);
