@@ -10,23 +10,18 @@ public class PlayerMovement : MonoBehaviour
     
     public float moveSpeed = 3.0f;
     public float jumpHeight = 7.0f;
-    public float groundDist;
     public LayerMask floorLayer;
     public LayerMask dropDownLayer;
     public float dropDownTime = 0.4f;
 
     public GameObject armParent;
     public GameObject bodyParent;
+    public Transform feetPosition;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-    }
-
-    private void Start()
-    {
-        groundDist = GetComponent<Collider2D>().bounds.extents.y;
     }
 
     // Update is called once per frame
@@ -41,23 +36,30 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(moveSpeed * Time.deltaTime, 0f, 0f);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && GroundCollision() != null)
         {
             rigidBody.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
         }
 
-        if(Input.GetKeyDown(KeyCode.S) && OnTopLevel())
+        if(Input.GetKeyDown(KeyCode.S))
         {
-            //Very clunky, review later
-            StartCoroutine(DropDown());
+            Collider2D col = OnTopLevel();
+            Debug.Log(col);
+            if (col != null)
+            {
+                Debug.Log("Fallin");
+                StartCoroutine(DropDown(col));
+            }
         }
     }
 
-    IEnumerator DropDown()
+    IEnumerator DropDown(Collider2D col)
     {
-        boxCollider.isTrigger = true;
-        yield return new WaitForSeconds(dropDownTime);
-        boxCollider.isTrigger = false;
+        PlatformEffector2D plt = col.gameObject.GetComponent<PlatformEffector2D>();
+        plt.rotationalOffset = 180;
+        while(GroundCollision() == null || GroundCollision().gameObject == col.gameObject)
+            yield return 0; //wait one frame
+        plt.rotationalOffset = 0;
 
     }
 
@@ -82,22 +84,21 @@ public class PlayerMovement : MonoBehaviour
         } 
     }
 
-    bool IsGrounded()
+    Collider2D GroundCollision()
     {
         //if falling or already jumping
-        if (rigidBody.velocity.y != 0) return false;
+        if (rigidBody.velocity.y != 0) return null;
         
         //Shoots a raycast to the ground 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundDist+0.2f, floorLayer);
-        
+        RaycastHit2D hit = Physics2D.Raycast(feetPosition.position, Vector2.down,0.2f, floorLayer);
         //Returns true if the raycast hit an object with floorLayer Layer
-        return hit.collider != null;
+        return hit.collider;
     }
 
-    bool OnTopLevel()
+    Collider2D OnTopLevel()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundDist + 0.2f, dropDownLayer );
+        RaycastHit2D hit = Physics2D.Raycast(feetPosition.position, Vector2.down, 0.2f, dropDownLayer );
         //Returns true if the raycast hit an object with floorLayer Layer
-        return hit.collider != null;
+        return hit.collider;
     }
 }
