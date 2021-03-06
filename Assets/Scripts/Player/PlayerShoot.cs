@@ -13,8 +13,10 @@ public class PlayerShoot : MonoBehaviour
     public GameObject grenade;
 
     public PlayerMana mana;
-    public float manaUsage = 20;
+    public float manaPrimary = 20;
+    public float manaSecondary = 45;
     public float damage = 30;
+    public float throwForce = 5;
 
     void Update()
     {
@@ -30,13 +32,19 @@ public class PlayerShoot : MonoBehaviour
 
     private void ShootSecondary()
     {
-        Instantiate(grenade, bulletSpawn.position, Quaternion.identity);
+
+        if(mana.mana < manaSecondary ) return;
+        mana.UseMana(manaSecondary );
+
+        GameObject grenadeInstance = Instantiate(grenade, bulletSpawn.position, Quaternion.identity);
+        Rigidbody2D grenRigidBody = grenadeInstance.GetComponent<Rigidbody2D>();
+        grenRigidBody.velocity = transform.TransformDirection(bulletSpawn.transform.right * throwForce);
     }
 
     void ShootPrimary()
     {
-        if (mana.mana < manaUsage) return;
-        mana.UseMana(manaUsage);
+        if (mana.mana < manaPrimary) return;
+        mana.UseMana(manaPrimary);
 
         Vector2 shootPosition = Input.mousePosition;
 

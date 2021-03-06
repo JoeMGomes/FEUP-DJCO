@@ -43,7 +43,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2001295239423028087}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5d801e5f183a11a40b5e1ffc75700ad3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -62,6 +62,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bf5630fa56d6944db46f3aa97369988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionTime: 1.5
+  radius: 3
+  remainingTime: 0
+  damageMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  explosion: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!50 &3195214151818343960
 Rigidbody2D:
   serializedVersion: 4
@@ -74,11 +81,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5d801e5f183a11a40b5e1ffc75700ad3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -154,7 +161,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.8394885, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.7830189, g: 0.38785568, b: 0.04801533, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

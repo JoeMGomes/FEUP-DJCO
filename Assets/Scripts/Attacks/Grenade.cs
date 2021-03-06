@@ -4,15 +4,43 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public float explosionTime = 1.5f;
+    public float radius = 3.0f;
+    public float remainingTime;
+    public LayerMask damageMask;
+    public GameObject explosion;
+
+    private void Start()
     {
-        
+        remainingTime = explosionTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(remainingTime < 0)
+        {
+            Explode();
+        }
+
+        remainingTime -= Time.deltaTime;
     }
+
+    void Explode()
+    {
+        
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radius, damageMask);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.tag == "Enemy")
+            {
+                hitCollider.gameObject.GetComponent<EnemyStats>().TakeDamage(30);
+            }
+        }
+        GameObject g = Instantiate(explosion, transform.position, transform.rotation);
+        Destroy(g, g.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject);
+    }
+
 }

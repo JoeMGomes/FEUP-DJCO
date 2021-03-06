@@ -861,8 +861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a0737fb82b39c4ab17da6d0a6a069a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPos: {fileID: 519420032}
   player: {fileID: 524332137}
+  speed: 6
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3337,6 +3337,11 @@ PrefabInstance:
       propertyPath: manaBar
       value: 
       objectReference: {fileID: 2094717456}
+    - target: {fileID: 8787055139648735330, guid: 6c656c8e2e1958f4d927aca629967fea,
+        type: 3}
+      propertyPath: throwForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8787055139648735331, guid: 6c656c8e2e1958f4d927aca629967fea,
         type: 3}
       propertyPath: jumpHeight
