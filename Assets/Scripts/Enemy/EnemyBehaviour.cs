@@ -17,6 +17,7 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject bodyParent;
     public TextMeshPro spotPopup;
     public State state;
+    public bool numb = false;
 
     public enum State
     {
@@ -37,6 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (numb) return;
 
         switch (state)
         {
@@ -106,5 +108,22 @@ public class EnemyBehaviour : MonoBehaviour
                 bodyParent.transform.localRotation = Quaternion.Euler(0, 180, 0);
             }
         }
+    }
+
+    public void Numb(float time)
+    {
+        StartCoroutine(NumbRoutine(time));
+    }
+
+    IEnumerator NumbRoutine(float time)
+    {
+        numb = true;
+        bool oldSpotPopupState = spotPopup.enabled;
+        spotPopup.enabled = true;
+        spotPopup.text = "?";
+        yield return new WaitForSeconds(time);
+        numb = false;
+        spotPopup.enabled = oldSpotPopupState;
+        spotPopup.text = "!";
     }
 }
