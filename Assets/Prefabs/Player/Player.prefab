@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &587701387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 587701388}
+  m_Layer: 10
+  m_Name: TextPopup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &587701388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587701387}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02, y: 0.77, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8787055139648735333}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8787055137702056456
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +321,7 @@ Transform:
   m_Children:
   - {fileID: 8787055138229131621}
   - {fileID: 8787055139489824665}
+  - {fileID: 587701388}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -384,6 +415,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   zapp: {fileID: 4267628343631450659, guid: 34302b4c291eef14396122d687fce2d8, type: 3}
+  grenade: {fileID: 2001295239423028087, guid: d73e9b810d1e5734eaabd399c9ca04f9, type: 3}
   mana: {fileID: 381546864}
   manaUsage: 20
   damage: 30
@@ -399,6 +431,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf0945a80837914bb9468842553cd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textPopup_prefab: {fileID: 7766041191551125038, guid: 67be2ac86bd5c9a43a1ac981cae72068,
+    type: 3}
+  textPopupPosition: {fileID: 587701387}
+  scorePhrases:
+  - "Mere\xE7o um caf\xE9"
+  - "Hoje ou amanh\xE3"
+  - Envia-me um email
+  - Estudasses
+  - "Pro' ano h\xE1 mais"
+  - Because why?
 --- !u!114 &381546857
 MonoBehaviour:
   m_ObjectHideFlags: 0

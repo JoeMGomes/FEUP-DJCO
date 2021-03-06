@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4789671674291785710}
   - component: {fileID: 4789671674291785709}
   m_Layer: 0
-  m_Name: Die_Phrase
+  m_Name: EnemyPhrases
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 4c5055d698d863b42b78dbdbf92b6829, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_text: "Hoje ou amanh\xE3..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 4c5055d698d863b42b78dbdbf92b6829, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -191,4 +191,5 @@ MonoBehaviour:
   lifeTime: 1.5
   fadeSpeed: 1
   textColor: {r: 1, g: 0.25, b: 0.25, a: 0}
-  moveSpeed: 1
+  MAX_MOVE_SPEED: 1.5
+  MIN_MOVE_SPEED: 0.5

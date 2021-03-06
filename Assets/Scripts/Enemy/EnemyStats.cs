@@ -33,6 +33,7 @@ public class EnemyStats : MonoBehaviour
 
         health_fill = health_slider.fillRect.GetComponentInChildren<Image>();
         health_bar.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
+        health_bar.SetActive(false);
     }
 
 
@@ -70,5 +71,10 @@ public class EnemyStats : MonoBehaviour
         health_slider.value = health;
         TextPopup t = Instantiate(textPopup_prefab, textPopupPosition.transform.position, transform.rotation).GetComponent<TextPopup>();
         t.Setup(hitPhrases[Mathf.FloorToInt(Random.Range(0,hitPhrases.Length))]);
+    }
+
+    public void activeHealthbar(bool stat)
+    {
+        health_bar.SetActive(stat);
     }
 }
