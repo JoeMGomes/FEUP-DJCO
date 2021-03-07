@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-
-    public Transform cameraPos;
     public GameObject player;
+    public float speed = 4;
 
     // Start is called before the first frame update
     void Start()
     {
-        cameraPos.position = new Vector3(player.transform.position.x, cameraPos.position.y, cameraPos.position.z);
+        transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        cameraPos.position = new Vector3(player.transform.position.x, cameraPos.position.y, cameraPos.position.z);
+        float x = Mathf.Lerp(this.transform.position.x, player.transform.position.x, speed * Time.deltaTime);
+        transform.position = new Vector3(x, transform.position.y, transform.position.z);
     }
 }

@@ -7,7 +7,7 @@ public class PlayerMana : MonoBehaviour
 
     public float mana;
     public float maxMana = 100f;
-    public float manaPerSecond = 10f;
+    public float manaReger = 5f;
 
     public ManaBar manaBar;
 
@@ -21,7 +21,7 @@ public class PlayerMana : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mana += manaPerSecond * Time.deltaTime;
+        mana += manaReger * Time.deltaTime;
         if (mana > maxMana) mana = maxMana;
         manaBar.SetMana(mana);
     }
