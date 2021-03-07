@@ -14,6 +14,7 @@ public class EnemyStats : MonoBehaviour
     private Image health_fill;
     public Vector3 offset_healthbar = new Vector3(0,1,0);
     public Color high, low;
+    private Rigidbody2D rigidBody;
 
     public GameObject textPopup_prefab;
     public GameObject textPopupPosition;
@@ -34,6 +35,8 @@ public class EnemyStats : MonoBehaviour
         health_fill = health_slider.fillRect.GetComponentInChildren<Image>();
         health_bar.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
         health_bar.SetActive(false);
+
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
 
@@ -71,6 +74,16 @@ public class EnemyStats : MonoBehaviour
         health_slider.value = health;
         TextPopup t = Instantiate(textPopup_prefab, textPopupPosition.transform.position, transform.rotation).GetComponent<TextPopup>();
         t.Setup(hitPhrases[Mathf.FloorToInt(Random.Range(0,hitPhrases.Length))]);
+
+    }
+
+    public void Flinch(Vector3 hitpos, float force = 5)
+    {
+        float x = force;
+        if (hitpos.x > transform.position.x)
+            x = -x;
+
+        rigidBody.AddForce(new Vector2(x, force), ForceMode2D.Impulse);
     }
 
     public void activeHealthbar(bool stat)

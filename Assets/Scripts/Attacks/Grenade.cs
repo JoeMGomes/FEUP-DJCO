@@ -8,6 +8,7 @@ public class Grenade : MonoBehaviour
     public float explosionTime = 1.5f;
     public float radius = 3.0f;
     public float remainingTime;
+    public float damage = 30f;
     public LayerMask damageMask;
     public GameObject explosion;
 
@@ -33,9 +34,11 @@ public class Grenade : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radius, damageMask);
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.tag == "Enemy")
+            if (hitCollider.CompareTag("Enemy"))
             {
-                hitCollider.gameObject.GetComponent<EnemyStats>().TakeDamage(30);
+                EnemyStats s = hitCollider.gameObject.GetComponent<EnemyStats>();
+                s.TakeDamage(damage);
+                s.Flinch(transform.position);
             }
         }
         GameObject g = Instantiate(explosion, transform.position, transform.rotation);

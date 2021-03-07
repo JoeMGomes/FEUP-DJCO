@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -80,6 +81,15 @@ public class PlayerMovement : MonoBehaviour
                 bodyParent.transform.localRotation = Quaternion.Euler(0, 180, 0);
             }
         } 
+    }
+
+    public void Flinch(Vector3 hitpos)
+    {
+        float x = 5;
+        if (hitpos.x > transform.position.x)
+            x = -x;
+
+        rigidBody.AddForce(new Vector2(x, 5), ForceMode2D.Impulse);
     }
 
     Collider2D GroundCollision()

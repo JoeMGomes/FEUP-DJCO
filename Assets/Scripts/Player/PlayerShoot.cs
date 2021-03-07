@@ -57,7 +57,9 @@ public class PlayerShoot : MonoBehaviour
 
             if (hit.collider.gameObject.CompareTag("Enemy"))
             {
-                hit.collider.gameObject.GetComponent<EnemyStats>().TakeDamage(damage);
+                EnemyStats s = hit.collider.gameObject.GetComponent<EnemyStats>();
+                s.TakeDamage(damage);
+                s.Flinch(transform.position, 2);
 
             }
         }

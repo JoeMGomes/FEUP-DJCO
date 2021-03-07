@@ -81,6 +81,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             col.gameObject.GetComponent<PlayerHealth>().TakeDamage(meleeDamage);
+            col.gameObject.GetComponent<PlayerMovement>().Flinch(transform.position);
         }
     }
 

@@ -25,5 +25,6 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damage;
         healthBar.SetHealth(health);
+        
     }
 }
