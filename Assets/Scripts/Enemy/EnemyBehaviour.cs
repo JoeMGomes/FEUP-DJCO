@@ -91,21 +91,25 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Vector2 diff = -PlayerDistance();
-
-        diff.Normalize();
-        float rotation = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-
-        //Handle arm roation and face the player sprite to the mouse
-        armParent.transform.rotation = Quaternion.Euler(0f, 0f, rotation);
-        bodyParent.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        //Mouse to the left side of the player
-        if (rotation < -90 || rotation > 90)
+        //Only point at teacher when spoted or chasing
+        if (state == State.Chase || state == State.Spot)
         {
-            if (armParent.transform.eulerAngles.y == 0)
+            Vector2 diff = -PlayerDistance();
+
+            diff.Normalize();
+            float rotation = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+
+            //Handle arm roation and face the player sprite to the mouse
+            armParent.transform.rotation = Quaternion.Euler(0f, 0f, rotation);
+            bodyParent.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            //Mouse to the left side of the player
+            if (rotation < -90 || rotation > 90)
             {
-                armParent.transform.localRotation = Quaternion.Euler(180, 0, -rotation);
-                bodyParent.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                if (armParent.transform.eulerAngles.y == 0)
+                {
+                    armParent.transform.localRotation = Quaternion.Euler(180, 0, -rotation);
+                    bodyParent.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
             }
         }
     }
@@ -121,7 +125,10 @@ public class EnemyBehaviour : MonoBehaviour
         bool oldSpotPopupState = spotPopup.enabled;
         spotPopup.enabled = true;
         spotPopup.text = "?";
+        EnemyStats es = gameObject.GetComponent<EnemyStats>();
+        es.activeHealthbar(false);
         yield return new WaitForSeconds(time);
+        es.activeHealthbar(true);
         numb = false;
         spotPopup.enabled = oldSpotPopupState;
         spotPopup.text = "!";

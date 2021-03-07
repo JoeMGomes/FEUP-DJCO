@@ -44,10 +44,8 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.S))
         {
             Collider2D col = OnTopLevel();
-            Debug.Log(col);
             if (col != null)
             {
-                Debug.Log("Fallin");
                 StartCoroutine(DropDown(col));
             }
         }
