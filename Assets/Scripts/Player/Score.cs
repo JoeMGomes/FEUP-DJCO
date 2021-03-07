@@ -12,12 +12,26 @@ public class Score : MonoBehaviour
 
     private bool started = false;
 
-    private float score = 34;
+    private float creepScore = 0;
+    private float score;
 
     public GameObject textPopup_prefab;
     public GameObject textPopupPosition;
     public string[] scorePhrases = new string[] { "Mereço um café", "Hoje ou amanhã", "Envia-me um email", "Estudasses", "Pro' ano há mais", "Because why?" };
 
+    public Dictionary<double, float> levelTimes = new Dictionary<double, float>();
+
+    private void Awake()
+    {
+        LevelInfo levelInfo = GameObject.Find("Level Manager").GetComponent<LevelInfo>();
+        if (levelInfo == null)
+        {
+            Debug.LogError("Level Manager is invalid. LevelInfo script missing.");
+            return;
+        }
+
+        levelTimes = levelInfo.GetDict();
+    }
 
     void Update()
     {
@@ -39,12 +53,29 @@ public class Score : MonoBehaviour
     {
         started = false;
         endTime = System.DateTime.Now;
-        score = (100000000.0f / (float)CurrentRunTime().TotalMilliseconds) + score;
+        score = GetTimeScore() + creepScore + gameObject.GetComponent<PlayerHealth>().health;
+    }
+
+    //If the player takes too long the time score is 0
+    float GetTimeScore()
+    {
+        double runTime = CurrentRunTime().TotalSeconds;
+
+        foreach (KeyValuePair<double, float> entry in levelTimes){
+
+            if(runTime < entry.Key)
+            {
+                return entry.Value;
+            }
+        }
+
+        return 40;
+        
     }
 
     public void IncrementScore(float amount)
     {
-        score += amount;
+        creepScore += amount;
 
         TextPopup t = Instantiate(textPopup_prefab, textPopupPosition.transform.position, transform.rotation).GetComponent<TextPopup>();
         t.Setup(scorePhrases[Mathf.FloorToInt(Random.Range(0, scorePhrases.Length))]);
@@ -58,24 +89,25 @@ public class Score : MonoBehaviour
         DateTime tempTime;
         if (endTime == startTime)
         {
-            tempTime = System.DateTime.Now;
+            tempTime = DateTime.Now;
         }
         else
         {
             tempTime = endTime;
         }
 
-        return (TimeSpan)tempTime.Subtract(startTime);
+        return tempTime.Subtract(startTime);
     }
 
     private void OnGUI()
     {
 
         GUI.Label(new Rect(10, 10, 100, 20), "Time: " + currRunTime.ToString(@"mm\:ss\:ff"));
-        GUI.Label(new Rect(10, 30, 100, 20), "Score: " + score.ToString());
+        GUI.Label(new Rect(10, 30, 100, 20), "CreepScore: " + creepScore.ToString());
+        GUI.Label(new Rect(10, 50, 200, 20), "Score Sums: " + GetTimeScore().ToString() + " "+ creepScore.ToString() + " " + gameObject.GetComponent<PlayerHealth>().health.ToString());
 
         //DEBUG ONLY
-        if(GUI.Button(new Rect(10, 70, 70, 20), "D_Start")){
+        if (GUI.Button(new Rect(10, 70, 70, 20), "D_Start")){
             StartRun();
         }
         if (GUI.Button(new Rect(10, 90, 70, 20), "D_End")){
