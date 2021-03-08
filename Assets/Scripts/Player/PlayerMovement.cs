@@ -28,26 +28,29 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (!LevelManager.gameIsPaused)
         {
-            transform.Translate(-moveSpeed * Time.deltaTime, 0f, 0f);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(moveSpeed * Time.deltaTime, 0f, 0f);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && GroundCollision() != null)
-        {
-            rigidBody.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-        }
-
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            Collider2D col = OnTopLevel();
-            if (col != null)
+            if (Input.GetKey(KeyCode.A))
             {
-                StartCoroutine(DropDown(col));
+                transform.Translate(-moveSpeed * Time.deltaTime, 0f, 0f);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(moveSpeed * Time.deltaTime, 0f, 0f);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && GroundCollision() != null)
+            {
+                rigidBody.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                Collider2D col = OnTopLevel();
+                if (col != null)
+                {
+                    StartCoroutine(DropDown(col));
+                }
             }
         }
     }
@@ -64,23 +67,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - armParent.transform.position;
-
-        diff.Normalize();
-        float rotation = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-
-        //Handle arm roation and face the player sprite to the mouse
-        armParent.transform.rotation = Quaternion.Euler(0f, 0f, rotation);
-        bodyParent.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        //Mouse to the left side of the player
-        if (rotation < -90 || rotation > 90)
+        if (!LevelManager.gameIsPaused)
         {
-            if (armParent.transform.eulerAngles.y == 0)
+            Vector2 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - armParent.transform.position;
+
+            diff.Normalize();
+            float rotation = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+
+            //Handle arm roation and face the player sprite to the mouse
+            armParent.transform.rotation = Quaternion.Euler(0f, 0f, rotation);
+            bodyParent.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            //Mouse to the left side of the player
+            if (rotation < -90 || rotation > 90)
             {
-                armParent.transform.localRotation = Quaternion.Euler(180, 0, -rotation);
-                bodyParent.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                if (armParent.transform.eulerAngles.y == 0)
+                {
+                    armParent.transform.localRotation = Quaternion.Euler(180, 0, -rotation);
+                    bodyParent.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                }
             }
-        } 
+        }
     }
 
     public void Flinch(Vector3 hitpos)

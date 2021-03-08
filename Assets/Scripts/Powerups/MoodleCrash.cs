@@ -6,12 +6,14 @@ public class MoodleCrash : MonoBehaviour
 {
 
     public float time = 2f;
+    public float scoreValue = 20;
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             //StartCoroutine(Pickup());
             Pickup();
+            other.GetComponent<Score>().IncrementScore(scoreValue);
         }
     }
     void Pickup()

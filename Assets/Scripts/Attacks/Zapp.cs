@@ -48,7 +48,7 @@ public class Zapp : MonoBehaviour
             }
             lineRend.positionCount = (i + 1);
             lineRend.SetPosition(i, target);
-            zapTimer = zapTimer - Time.deltaTime;
+            zapTimer = zapTimer - Time.unscaledDeltaTime;
         }//If already fired
         else if(zapTimer <= 0 && started)
         {

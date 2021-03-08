@@ -28,12 +28,12 @@ public class TextPopup : MonoBehaviour
 
     public void Update()
     {
-        transform.position += new Vector3(moveSpeed_x, moveSpeed_y, 0) * Time.deltaTime;
-        lifeTime -= Time.deltaTime;
+        transform.position += new Vector3(moveSpeed_x, moveSpeed_y, 0) * Time.unscaledDeltaTime;
+        lifeTime -= Time.unscaledDeltaTime;
 
         if(lifeTime < 0)
         {
-            textColor.a -= fadeSpeed * Time.deltaTime;
+            textColor.a -= fadeSpeed * Time.unscaledDeltaTime;
             textMesh.color= textColor;
             if(textColor.a < 0)
             {

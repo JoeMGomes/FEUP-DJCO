@@ -6,9 +6,7 @@ using Random = UnityEngine.Random;
 public class Score : MonoBehaviour
 {
 
-    private DateTime startTime;
-    private DateTime endTime;
-    private TimeSpan currRunTime;
+    private float runTime = 0;
 
     private bool started = false;
 
@@ -23,43 +21,44 @@ public class Score : MonoBehaviour
 
     private void Awake()
     {
-        LevelInfo levelInfo = GameObject.Find("Level Manager").GetComponent<LevelInfo>();
-        if (levelInfo == null)
+        LevelManager levelManager = GameObject.Find("Level Manager").GetComponent<LevelManager>();
+        if (levelManager == null)
         {
-            Debug.LogError("Level Manager is invalid. LevelInfo script missing.");
+            Debug.LogError("Level Manager is invalid. LevelManager script missing.");
             return;
         }
 
-        levelTimes = levelInfo.GetDict();
+        levelTimes = levelManager.GetDict();
     }
 
     void Update()
     {
         if (started)
         {
-            currRunTime = CurrentRunTime();
+            runTime += Time.deltaTime;
         }
     }
 
-    void StartRun()
+    public void StartRun()
     {
         started = true;
-        startTime = System.DateTime.Now;
-        endTime = System.DateTime.Now;
+        runTime = 0;
         score = 0;
     }
 
-    void EndRun()
+    public void EndRun()
     {
         started = false;
-        endTime = System.DateTime.Now;
         score = GetTimeScore() + creepScore + gameObject.GetComponent<PlayerHealth>().health;
+    }
+
+    public float GetScore() {
+        return score;
     }
 
     //If the player takes too long the time score is 0
     float GetTimeScore()
     {
-        double runTime = CurrentRunTime().TotalSeconds;
 
         foreach (KeyValuePair<double, float> entry in levelTimes){
 
@@ -81,30 +80,12 @@ public class Score : MonoBehaviour
         t.Setup(scorePhrases[Mathf.FloorToInt(Random.Range(0, scorePhrases.Length))]);
     }
 
-    //Returns current run time
-    //Uses endTime if it is set or current Time if endTime is not set
-    TimeSpan CurrentRunTime()
-    {
-
-        DateTime tempTime;
-        if (endTime == startTime)
-        {
-            tempTime = DateTime.Now;
-        }
-        else
-        {
-            tempTime = endTime;
-        }
-
-        return tempTime.Subtract(startTime);
-    }
 
     private void OnGUI()
     {
-
-        GUI.Label(new Rect(10, 10, 100, 20), "Time: " + currRunTime.ToString(@"mm\:ss\:ff"));
+        GUI.Label(new Rect(10, 10, 100, 20), "Time: " + TimeSpan.FromSeconds(runTime).ToString("mm\\:ss\\.ff"));
         GUI.Label(new Rect(10, 30, 100, 20), "CreepScore: " + creepScore.ToString());
-        GUI.Label(new Rect(10, 50, 200, 20), "Score Sums: " + GetTimeScore().ToString() + " "+ creepScore.ToString() + " " + gameObject.GetComponent<PlayerHealth>().health.ToString());
+        GUI.Label(new Rect(10, 50, 200, 20), "Score Sums: " + GetTimeScore().ToString() + " " + creepScore.ToString() + " " + gameObject.GetComponent<PlayerHealth>().health.ToString());
 
         //DEBUG ONLY
         if (GUI.Button(new Rect(10, 70, 70, 20), "D_Start")){

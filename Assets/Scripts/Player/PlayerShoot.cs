@@ -20,13 +20,16 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-          ShootPrimary();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            ShootSecondary();
+
+        if (!LevelManager.gameIsPaused) {
+            if (Input.GetMouseButtonDown(0))
+            {
+                ShootPrimary();
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                ShootSecondary();
+            }
         }
     }
 
