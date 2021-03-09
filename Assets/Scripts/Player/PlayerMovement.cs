@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && GroundCollision() != null)
             {
-                rigidBody.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+                Jump();
             }
 
             if (Input.GetKeyDown(KeyCode.S))
@@ -53,6 +53,12 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void Jump()
+    {
+        rigidBody.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+        SoundManager.Instance.PlaySound(SoundManager.Sound.PlayerJump);
     }
 
     IEnumerator DropDown(Collider2D col)

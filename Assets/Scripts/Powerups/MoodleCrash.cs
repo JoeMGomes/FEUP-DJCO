@@ -19,6 +19,7 @@ public class MoodleCrash : MonoBehaviour
     void Pickup()
     {
         // cool efect ??
+        SoundManager.Instance.PlaySound(SoundManager.Sound.PlayerGrabPowerUp);
 
         // apply efect to the enemies (numb?)
         ExecuteEffectOnEnemies();

@@ -23,7 +23,7 @@ public class Zapp : MonoBehaviour
         zapTimer = 0.25f;
         lineRend.positionCount = (1);
         targetPlayer = GameObject.Find("Player/Arm/Bullet_Spawn").GetComponent<Transform>();
-
+        SoundManager.Instance.PlaySound(SoundManager.Sound.PlayerShootPrimary);
     }
 
     void Update()

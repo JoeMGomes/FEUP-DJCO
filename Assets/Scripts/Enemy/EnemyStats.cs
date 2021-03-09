@@ -48,6 +48,7 @@ public class EnemyStats : MonoBehaviour
             targetPlayer.GetComponent<Score>().IncrementScore(scoreValue);
             TextPopup t = Instantiate(textPopup_prefab, textPopupPosition.transform.position, transform.rotation).GetComponent<TextPopup>();
             t.Setup(diePhrases[Mathf.FloorToInt(Random.Range(0, diePhrases.Length))]);
+            SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyDie);
             Destroy(gameObject);
         }
 
@@ -66,6 +67,7 @@ public class EnemyStats : MonoBehaviour
     private void OnDestroy()
     {
         Destroy(health_bar);
+
     }
 
     public void TakeDamage(float damage)
@@ -74,6 +76,7 @@ public class EnemyStats : MonoBehaviour
         health_slider.value = health;
         TextPopup t = Instantiate(textPopup_prefab, textPopupPosition.transform.position, transform.rotation).GetComponent<TextPopup>();
         t.Setup(hitPhrases[Mathf.FloorToInt(Random.Range(0,hitPhrases.Length))]);
+        SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyHit);
 
     }
 

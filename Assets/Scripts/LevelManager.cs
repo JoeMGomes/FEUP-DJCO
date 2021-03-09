@@ -21,6 +21,15 @@ public class LevelManager : MonoBehaviour
 
     public static bool gameIsPaused = true;
 
+    public SoundAudioClip[] audioClips;
+
+    [System.Serializable]
+    public class SoundAudioClip
+    {
+        public SoundManager.Sound sound;
+        public AudioClip audioClip;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +66,7 @@ public class LevelManager : MonoBehaviour
         playerScore.StartRun();
         started = true;
         ended = false;
+        SoundManager.Instance.PlaySound(SoundManager.Sound.StartRun);
     }
 
     private void Update()
@@ -68,11 +78,13 @@ public class LevelManager : MonoBehaviour
         }
 
         //Make it mandatory to eliminate all enemies?
-        if(player.transform.position.x > finishLine.position.x)
+        if(player.transform.position.x > finishLine.position.x && !ended)
         {
             ended = true;
             playerScore.EndRun();
             PauseGame();
+            SoundManager.Instance.PlaySound(SoundManager.Sound.EndRun);
+
         }
     }
 
@@ -116,5 +128,7 @@ public class LevelManager : MonoBehaviour
         }
 
     }
+
+   
 
 }

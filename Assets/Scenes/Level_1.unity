@@ -1190,6 +1190,29 @@ MonoBehaviour:
   - 200
   - 150
   - 50
+  audioClips:
+  - sound: 0
+    audioClip: {fileID: 8300000, guid: fd26633a22fe2394e8c78b713439e3f5, type: 3}
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: 44d001b2e4e072549affa584142e3ede, type: 3}
+  - sound: 2
+    audioClip: {fileID: 8300000, guid: e780d63e18dd77e4ba47f4e23790b73f, type: 3}
+  - sound: 3
+    audioClip: {fileID: 8300000, guid: 44d001b2e4e072549affa584142e3ede, type: 3}
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: 59b9d05e64a9bc348a3ec089846f7fc9, type: 3}
+  - sound: 5
+    audioClip: {fileID: 8300000, guid: a764377339b869e459f5e53fb9258f73, type: 3}
+  - sound: 6
+    audioClip: {fileID: 8300000, guid: 5ec70624fb09a5643891bfc29765bace, type: 3}
+  - sound: 7
+    audioClip: {fileID: 8300000, guid: df8dfd836ff5a3242b7634226138ad12, type: 3}
+  - sound: 9
+    audioClip: {fileID: 8300000, guid: 80ddb2ab896bd4a47900ab5930d03865, type: 3}
+  - sound: 10
+    audioClip: {fileID: 8300000, guid: 80ddb2ab896bd4a47900ab5930d03865, type: 3}
+  - sound: 8
+    audioClip: {fileID: 8300000, guid: 2be9c41ad5011f6428b4cd5e32f630f7, type: 3}
 --- !u!4 &467325120
 Transform:
   m_ObjectHideFlags: 0

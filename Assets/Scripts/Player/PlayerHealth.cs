@@ -18,6 +18,11 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(health < 0)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.PlayerDie);
+        }
         
     }
 
@@ -25,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damage;
         healthBar.SetHealth(health);
-        
+        SoundManager.Instance.PlaySound(SoundManager.Sound.PlayerHit);
+
     }
 }

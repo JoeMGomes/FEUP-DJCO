@@ -15,6 +15,7 @@ public class Grenade : MonoBehaviour
     private void Start()
     {
         remainingTime = explosionTime;
+        SoundManager.Instance.PlaySound(SoundManager.Sound.PlayerShootSecondary);
     }
 
     // Update is called once per frame
@@ -41,6 +42,10 @@ public class Grenade : MonoBehaviour
                 s.Flinch(transform.position);
             }
         }
+
+        SoundManager.Instance.PlaySound(SoundManager.Sound.GrenadeExplode);
+
+
         GameObject g = Instantiate(explosion, transform.position, transform.rotation);
         Destroy(g, g.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length);
         Destroy(gameObject);
