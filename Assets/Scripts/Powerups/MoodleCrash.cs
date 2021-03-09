@@ -11,7 +11,6 @@ public class MoodleCrash : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //StartCoroutine(Pickup());
             Pickup();
             other.GetComponent<Score>().IncrementScore(scoreValue);
         }
@@ -20,7 +19,7 @@ public class MoodleCrash : MonoBehaviour
     {
         // cool efect ??
 
-        // apply efect to the enemies (numb?)
+        // apply efect to the enemies (numb)
         ExecuteEffectOnEnemies();
 
         Destroy(gameObject);

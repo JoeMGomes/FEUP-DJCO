@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 1722204668730286420, guid: 4eeb24f252ae6d941b65fae879e52235,
         type: 3}
       propertyPath: m_Name
-      value: Simple_Tile (1) Variant
+      value: Elevator_Tile
       objectReference: {fileID: 0}
     - target: {fileID: 1722204669426693639, guid: 4eeb24f252ae6d941b65fae879e52235,
         type: 3}
@@ -73,10 +73,5 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: b03abebf012603344ac3b930174e44b2,
         type: 3}
-    - target: {fileID: 1722204669453551540, guid: 4eeb24f252ae6d941b65fae879e52235,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eeb24f252ae6d941b65fae879e52235, type: 3}

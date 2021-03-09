@@ -263,12 +263,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 5
   spotTime: 0.3
-  moveSpeed: 3
+  moveSpeed: 5
   meleeDamage: 20
   armParent: {fileID: 1304158487203834646}
   bodyParent: {fileID: 1304158487531467972}
   spotPopup: {fileID: 0}
   state: 0
+  numb: 0
 --- !u!114 &5694904881273483248
 MonoBehaviour:
   m_ObjectHideFlags: 0
