@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject bodyParent;
     public Transform feetPosition;
 
+    public bool onWater = false;
+
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -107,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
     Collider2D GroundCollision()
     {
         //if falling or already jumping
-        if (rigidBody.velocity.y != 0) return null;
+        if (rigidBody.velocity.y != 0 || onWater) return null;
         
         //Shoots a raycast to the ground 
         RaycastHit2D hit = Physics2D.Raycast(feetPosition.position, Vector2.down,0.2f, floorLayer);
