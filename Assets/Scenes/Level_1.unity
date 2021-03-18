@@ -1212,6 +1212,8 @@ MonoBehaviour:
   - 200
   - 150
   - 50
+  countText: {fileID: 1639199265767334171, guid: c2657c5a5a050a445b1be29ef008b32a,
+    type: 3}
   audioClips:
   - sound: 0
     audioClip: {fileID: 8300000, guid: fd26633a22fe2394e8c78b713439e3f5, type: 3}
@@ -4441,6 +4443,11 @@ PrefabInstance:
     - target: {fileID: 381546864, guid: 6c656c8e2e1958f4d927aca629967fea, type: 3}
       propertyPath: manaRegen
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787055139648735330, guid: 6c656c8e2e1958f4d927aca629967fea,
+        type: 3}
+      propertyPath: damage
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8787055139648735330, guid: 6c656c8e2e1958f4d927aca629967fea,
         type: 3}

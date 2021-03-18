@@ -65,6 +65,7 @@ MonoBehaviour:
   explosionTime: 1.5
   radius: 3
   remainingTime: 0
+  damage: 60
   damageMask:
     serializedVersion: 2
     m_Bits: 1024

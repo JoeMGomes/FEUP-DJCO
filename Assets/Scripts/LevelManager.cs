@@ -21,8 +21,9 @@ public class LevelManager : MonoBehaviour
 
     public static bool gameIsPaused = true;
 
-    public SoundAudioClip[] audioClips;
+    public GameObject countText;
 
+    public SoundAudioClip[] audioClips;
     [System.Serializable]
     public class SoundAudioClip
     {
@@ -44,6 +45,31 @@ public class LevelManager : MonoBehaviour
 
         startLine = gameObject.transform.Find("Start Line");
         finishLine = gameObject.transform.Find("Finish Line");
+
+        StartCoroutine(CountdownToStart());
+    }
+
+    IEnumerator CountdownToStart()
+    {
+        Debug.Log("Starting Countdown");
+
+        string[] numbers = { "","3", "2", "1" };
+
+        for (int i = 0; i < numbers.Length; i++) {
+            TextPopup _t = Instantiate(countText, Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane)), Quaternion.identity).GetComponent<TextPopup>();
+            Vector3 _temp = _t.gameObject.GetComponent<RectTransform>().position;
+            _temp.z = 0;
+            _t.gameObject.GetComponent<RectTransform>().position = _temp;
+            _t.Setup(numbers[i]);
+            yield return new WaitForSecondsRealtime(1);
+         }
+
+        TextPopup t = Instantiate(countText, Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane)), Quaternion.identity).GetComponent<TextPopup>();
+        Vector3 temp = t.gameObject.GetComponent<RectTransform>().position;
+        temp.z = 0;
+        t.gameObject.GetComponent<RectTransform>().position = temp;
+        t.Setup("Go");
+        StartLevel();
     }
 
     public Dictionary<double, float> GetDict()
@@ -111,13 +137,7 @@ public class LevelManager : MonoBehaviour
             GUI.Box(new Rect(Screen.width / 2, (Screen.height / 2), 100, 50), "Paused");
         }
 
-        if (!started) { 
-            if (GUI.Button(new Rect(Screen.width / 2, Screen.height / 2, 70, 20), "Start Level"))
-            {
-                StartLevel();
-            }
-        }
-
+       
         if (ended)
         {
             GUI.Box(new Rect(Screen.width / 2, (Screen.height / 2), 150, 50), "Your score is: " + playerScore.GetScore());
