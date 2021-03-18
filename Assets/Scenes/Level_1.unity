@@ -4593,6 +4593,10 @@ PrefabInstance:
       propertyPath: manaBar
       value: 
       objectReference: {fileID: 2094717456}
+    - target: {fileID: 381546864, guid: 6c656c8e2e1958f4d927aca629967fea, type: 3}
+      propertyPath: manaRegen
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8787055139648735330, guid: 6c656c8e2e1958f4d927aca629967fea,
         type: 3}
       propertyPath: throwForce
