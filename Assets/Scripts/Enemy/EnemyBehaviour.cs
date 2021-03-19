@@ -72,7 +72,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Vector2 playerDist = PlayerDistance();
 
-        transform.Translate(moveSpeed * Time.deltaTime * (playerDist.x < 0 ? 1 : -1), 0f, 0f);
+        if(Mathf.Abs(playerDist.x) > 0.3)
+            transform.Translate(moveSpeed * Time.deltaTime * (playerDist.x < 0 ? 1 : -1), 0f, 0f);
 
     }
 
