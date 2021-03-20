@@ -113,14 +113,7 @@ public class LevelManager : MonoBehaviour
         //Make it mandatory to eliminate all enemies?
         if(player.transform.position.x > finishLine.position.x && !ended)
         {
-            ended = true;
-            playerScore.EndRun();
-            PauseGame();
-            SoundManager.Instance.PlaySound(SoundManager.Sound.EndRun);
-
-            WinMenu.SetActive(true);
-            TimeText.text = TimeSpan.FromSeconds(playerScore.RunTime).ToString("mm\\:ss\\.ff");
-            ScoreText.text = playerScore.TotalScore.ToString();
+            WinGame();
         }
     }
 
@@ -137,6 +130,38 @@ public class LevelManager : MonoBehaviour
             gameIsPaused = false;
         }
     }
-   
+
+    public void WinGame()
+    {
+        ended = true;
+        playerScore.EndRun();
+        PauseGame();
+        SoundManager.Instance.PlaySound(SoundManager.Sound.EndRun);
+
+        WinMenu.SetActive(true);
+        TimeText.text = TimeSpan.FromSeconds(playerScore.RunTime).ToString("mm\\:ss\\.ff");
+        ScoreText.text = playerScore.TotalScore.ToString();
+    }
+    public void LoseGame()
+    {
+        ended = true;
+        PauseGame();
+        LoseMenu.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
 }

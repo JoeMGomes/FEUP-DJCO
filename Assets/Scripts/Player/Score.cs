@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Score : MonoBehaviour
     public float RunTime { get => runTime; set => runTime = value; }
     public float TotalScore { get => score; set => score = value; }
 
+    public Text TimeUI;
+
     private void Awake()
     {
         LevelManager levelManager = GameObject.Find("Level Manager").GetComponent<LevelManager>();
@@ -40,6 +43,8 @@ public class Score : MonoBehaviour
         {
             runTime += Time.deltaTime;
         }
+
+        TimeUI.text = "Time: " + TimeSpan.FromSeconds(runTime).ToString("mm\\:ss\\.ff");
     }
 
     public void StartRun()
@@ -83,23 +88,4 @@ public class Score : MonoBehaviour
         t.Setup(scorePhrases[Mathf.FloorToInt(Random.Range(0, scorePhrases.Length))]);
     }
 
-
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 100, 20), "Time: " + TimeSpan.FromSeconds(runTime).ToString("mm\\:ss\\.ff"));
-        GUI.Label(new Rect(10, 30, 100, 20), "CreepScore: " + creepScore.ToString());
-        GUI.Label(new Rect(10, 50, 200, 20), "Score Sums: " + GetTimeScore().ToString() + " " + creepScore.ToString() + " " + gameObject.GetComponent<PlayerHealth>().health.ToString());
-
-        //DEBUG ONLY
-        if (GUI.Button(new Rect(10, 70, 70, 20), "D_Start")){
-            StartRun();
-        }
-        if (GUI.Button(new Rect(10, 90, 70, 20), "D_End")){
-            EndRun();
-        }
-        if (GUI.Button(new Rect(10, 110, 80, 20), "D_Score"))
-        {
-            IncrementScore(20);
-        }
-    }
 }

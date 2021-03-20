@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
         if(health < 0)
         {
             SoundManager.Instance.PlaySound(SoundManager.Sound.PlayerDie);
+            GameObject.Find("Level Manager").GetComponent<LevelManager>().LoseGame();
         }
         
     }
