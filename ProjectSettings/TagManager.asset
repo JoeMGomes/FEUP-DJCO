@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Canvas
+  - LevelBorder
   layers:
   - Default
   - TransparentFX

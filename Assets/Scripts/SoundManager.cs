@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class SoundManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     // Check to see if we're about to be destroyed.
     private static bool m_ShuttingDown = false;
@@ -117,24 +117,43 @@ public  class SoundManager : MonoBehaviour
     {
         switch (sound)
         {
+            
+            case Sound.PlayerDie:
+                float minTime = 15f; //only play sound every 50ms
+                if (soundTimes.ContainsKey(sound))
+                {
+                    if (soundTimes[sound] + minTime < Time.time)
+                    {
+                        soundTimes[sound] = Time.time;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
             default:
                 return true;
-            //example code for limiting sound playing
-            /* case Sound.Example:
-             * float minTime = 0.05f //only play sound every 50ms
-             * if(soundTimes.ContainsKey(sound)){
-             *      if(soundTimes[sound] + minTime < Time.time){
-             *          soundTimeDictionary[sound] = Time.time;
-             *          return true;
-             *      } else{
-             *          return false;
-             *      }
-             * } else{
-             *  return true;
-             * }
-             * break
-             */
-           
+                //example code for limiting sound playing
+                /* case Sound.Example:
+                 * float minTime = 0.05f //only play sound every 50ms
+                 * if(soundTimes.ContainsKey(sound)){
+                 *      if(soundTimes[sound] + minTime < Time.time){
+                 *          soundTimeDictionary[sound] = Time.time;
+                 *          return true;
+                 *      } else{
+                 *          return false;
+                 *      }
+                 * } else{
+                 *  return true;
+                 * }
+                 * break
+                 */
+
         }
     }
 
