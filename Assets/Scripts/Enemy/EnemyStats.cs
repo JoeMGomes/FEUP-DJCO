@@ -27,13 +27,12 @@ public class EnemyStats : MonoBehaviour
         targetPlayer = GameObject.Find("Player");
 
         //Kind of messy but works fine
-        health_bar = Instantiate(health_bar_prefab,  transform.position + offset_healthbar, transform.rotation);
+        health_bar = Instantiate(health_bar_prefab,  transform.position + offset_healthbar, transform.rotation, GameObject.FindGameObjectWithTag("Canvas").transform);
         health_slider = health_bar.GetComponent<Slider>();
         health_slider.maxValue = health;
         health_slider.value = health;
 
         health_fill = health_slider.fillRect.GetComponentInChildren<Image>();
-        health_bar.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
         health_bar.SetActive(false);
 
         rigidBody = gameObject.GetComponent<Rigidbody2D>();

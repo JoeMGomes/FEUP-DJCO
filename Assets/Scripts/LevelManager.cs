@@ -51,8 +51,6 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator CountdownToStart()
     {
-        Debug.Log("Starting Countdown");
-
         string[] numbers = { "","3", "2", "1" };
 
         for (int i = 0; i < numbers.Length; i++) {
