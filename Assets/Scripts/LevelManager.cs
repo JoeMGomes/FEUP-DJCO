@@ -67,6 +67,7 @@ public class LevelManager : MonoBehaviour
             _temp.z = 0;
             _t.gameObject.GetComponent<RectTransform>().position = _temp;
             _t.Setup(numbers[i]);
+            SoundManager.Instance.PlaySound(SoundManager.Sound.StartRun);
             yield return new WaitForSecondsRealtime(1);
          }
 
@@ -104,7 +105,7 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !ended)
         {
             PauseGame(!gameIsPaused);
             PauseMenu.SetActive(gameIsPaused);
