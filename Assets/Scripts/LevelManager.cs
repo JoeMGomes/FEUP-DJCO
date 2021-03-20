@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,6 +22,12 @@ public class LevelManager : MonoBehaviour
     private bool ended = false;
 
     public static bool gameIsPaused = true;
+
+    public GameObject PauseMenu;
+    public GameObject WinMenu;
+    public GameObject LoseMenu;
+    public Text ScoreText;
+    public Text TimeText;
 
     public GameObject countText;
 
@@ -45,7 +53,7 @@ public class LevelManager : MonoBehaviour
 
         startLine = gameObject.transform.Find("Start Line");
         finishLine = gameObject.transform.Find("Finish Line");
-
+    
         StartCoroutine(CountdownToStart());
     }
 
@@ -99,6 +107,7 @@ public class LevelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame(!gameIsPaused);
+            PauseMenu.SetActive(gameIsPaused);
         }
 
         //Make it mandatory to eliminate all enemies?
@@ -109,10 +118,13 @@ public class LevelManager : MonoBehaviour
             PauseGame();
             SoundManager.Instance.PlaySound(SoundManager.Sound.EndRun);
 
+            WinMenu.SetActive(true);
+            TimeText.text = TimeSpan.FromSeconds(playerScore.RunTime).ToString("mm\\:ss\\.ff");
+            ScoreText.text = playerScore.TotalScore.ToString();
         }
     }
 
-    public static void PauseGame(bool paused = true)
+    public void PauseGame(bool paused = true)
     {
         if (paused)
         {
@@ -125,28 +137,6 @@ public class LevelManager : MonoBehaviour
             gameIsPaused = false;
         }
     }
-
-
-    private void OnGUI()
-    {
-
-        if (gameIsPaused && started && !ended)
-        {
-            GUI.Box(new Rect(Screen.width / 2, (Screen.height / 2), 100, 50), "Paused");
-        }
-
-       
-        if (ended)
-        {
-            GUI.Box(new Rect(Screen.width / 2, (Screen.height / 2), 150, 50), "Your score is: " + playerScore.GetScore());
-            if (GUI.Button(new Rect(Screen.width / 2, Screen.height / 2 - 40, 100, 20), "Restart?"))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);            
-            }
-        }
-
-    }
-
    
 
 }

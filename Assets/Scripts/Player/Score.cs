@@ -19,6 +19,9 @@ public class Score : MonoBehaviour
 
     public Dictionary<double, float> levelTimes = new Dictionary<double, float>();
 
+    public float RunTime { get => runTime; set => runTime = value; }
+    public float TotalScore { get => score; set => score = value; }
+
     private void Awake()
     {
         LevelManager levelManager = GameObject.Find("Level Manager").GetComponent<LevelManager>();
