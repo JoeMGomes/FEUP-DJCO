@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 8787055139648735333}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2634235333482369044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317748107813189125}
+  m_Layer: 0
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1317748107813189125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634235333482369044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8787055139648735333}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8787055137702056456
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,6 +352,7 @@ Transform:
   - {fileID: 8787055138229131621}
   - {fileID: 8787055139489824665}
   - {fileID: 587701388}
+  - {fileID: 1317748107813189125}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -359,7 +390,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12, y: -0.16}
+  m_Offset: {x: 0.12, y: -0.21}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -388,7 +419,6 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   moveSpeed: 10
   jumpHeight: 10
-  groundDist: 0
   floorLayer:
     serializedVersion: 2
     m_Bits: 6400
@@ -398,6 +428,8 @@ MonoBehaviour:
   dropDownTime: 0.4
   armParent: {fileID: 8787055139489824666}
   bodyParent: {fileID: 8787055138229131622}
+  feetPosition: {fileID: 0}
+  onWater: 0
 --- !u!114 &8787055139648735330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,8 +449,10 @@ MonoBehaviour:
   zapp: {fileID: 4267628343631450659, guid: 34302b4c291eef14396122d687fce2d8, type: 3}
   grenade: {fileID: 2001295239423028087, guid: d73e9b810d1e5734eaabd399c9ca04f9, type: 3}
   mana: {fileID: 381546864}
-  manaUsage: 20
-  damage: 30
+  manaPrimary: 20
+  manaSecondary: 45
+  damage: 35
+  throwForce: 10
 --- !u!114 &7045463284472809040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +475,7 @@ MonoBehaviour:
   - Estudasses
   - "Pro' ano h\xE1 mais"
   - Because why?
+  TimeUI: {fileID: 0}
 --- !u!114 &381546857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,5 +505,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mana: 100
   maxMana: 100
-  manaPerSecond: 50
+  manaRegen: 10
   manaBar: {fileID: 0}
