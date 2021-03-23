@@ -23,7 +23,6 @@ public class CleaningLady : MonoBehaviour
         {
             TextPopup t = Instantiate(textPopup, transform.position, Quaternion.identity).GetComponent<TextPopup>();
             t.Setup(teacherReact[Mathf.FloorToInt(Random.Range(0, teacherReact.Length))]);
-            collision.collider.GetComponent<PlayerMovement>().Flinch(gameObject.transform.position);
 
         }
     }
