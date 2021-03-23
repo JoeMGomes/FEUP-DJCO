@@ -10,6 +10,12 @@ public class Coffee : MonoBehaviour
     public float multiplier = 3f; // mana regen multiplier
 
     public SpriteRenderer sprite;
+    public GameObject coffeeVisual;
+
+    void Start()
+    {
+        coffeeVisual = GameObject.Find("Canvas/ManaBar/CoffeeVisual");
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -31,9 +37,13 @@ public class Coffee : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         sprite.enabled = false;
 
+        // visual coffee effect
+        coffeeVisual.SetActive(true);
+
         // wait until effect ends and go back to normal
         yield return new WaitForSeconds(time);
         mana.manaRegen /= multiplier;
+        coffeeVisual.SetActive(false);
         Destroy(gameObject);
     }
 }

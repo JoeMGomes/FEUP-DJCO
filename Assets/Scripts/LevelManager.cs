@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     //These arrays must be the same size as they will be converted to a Dictionary
     //Having seperate arrays helps with Unity's visualization in Editor
-    public double[] timeGoals = { 60,90,140};
+    public double[] timeGoals = { 20,50,100};
     public float[] scoreValues= { 200, 150, 50};
 
     private Transform startLine;
