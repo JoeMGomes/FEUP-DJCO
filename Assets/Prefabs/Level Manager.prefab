@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4842709606759952936}
   - component: {fileID: 4842709606759952939}
+  - component: {fileID: 8172562040913428237}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -115,6 +116,18 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 80ddb2ab896bd4a47900ab5930d03865, type: 3}
   - sound: 8
     audioClip: {fileID: 8300000, guid: 2be9c41ad5011f6428b4cd5e32f630f7, type: 3}
+--- !u!114 &8172562040913428237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842709606759952938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59a30d4ce9987643b51a368609f2bb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4842709607423701011
 GameObject:
   m_ObjectHideFlags: 0

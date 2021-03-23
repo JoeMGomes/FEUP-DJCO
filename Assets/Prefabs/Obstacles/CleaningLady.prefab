@@ -164,7 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64693f1f8e88934bb91db060e57f53d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phrases:
+  teacherReact:
   - "Passe por cima, s\xF4tor!"
-  - "Agora num d\xE1!"
-  textPopup: {fileID: 0}
+  - Cuidado num caia!
+  studentReact:
+  - "Tas tolo, mo\xE7o??"
+  - Bais tombar!!
+  textPopup: {fileID: 1639199265767334171, guid: c2657c5a5a050a445b1be29ef008b32a,
+    type: 3}
