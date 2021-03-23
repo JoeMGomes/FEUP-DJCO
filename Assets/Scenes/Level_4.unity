@@ -2160,13 +2160,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5606815353183083321, guid: a47a3be4d37764d47819822876657790,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5606815353183083321, guid: a47a3be4d37764d47819822876657790,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 840460739}
+      objectReference: {fileID: 2114147181}
     - target: {fileID: 5606815353183083321, guid: a47a3be4d37764d47819822876657790,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitLevel
+      value: LoadLevel
       objectReference: {fileID: 0}
     - target: {fileID: 5606815354186192498, guid: a47a3be4d37764d47819822876657790,
         type: 3}
