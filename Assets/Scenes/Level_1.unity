@@ -4314,6 +4314,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 818635266}
     m_Modifications:
+    - target: {fileID: 1882189311, guid: afd9cd517dc60c1478c80c2a201bcdb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882189311, guid: afd9cd517dc60c1478c80c2a201bcdb9, type: 3}
+      propertyPath: m_TagString
+      value: CoffeeVisual
+      objectReference: {fileID: 0}
     - target: {fileID: 1822296500041570456, guid: afd9cd517dc60c1478c80c2a201bcdb9,
         type: 3}
       propertyPath: m_AnchorMax.y
